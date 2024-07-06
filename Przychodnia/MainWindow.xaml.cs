@@ -72,6 +72,11 @@ namespace Przychodnia
             WyswietlPracownikowWindow wyswietlPracownikowWindow = new WyswietlPracownikowWindow();
             wyswietlPracownikowWindow.ShowDialog();
         }
+        private void btnUmowWizyte_Click(object sender, RoutedEventArgs e)
+        {
+            UmowWizyteWindow umowWizyteWindow = new UmowWizyteWindow();
+            umowWizyteWindow.ShowDialog();
+        }
 
 
 

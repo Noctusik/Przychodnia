@@ -1,0 +1,18 @@
+﻿<Window x:Class="Przychodnia.UmowWizyteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Umów Wizytę" Height="400" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Pacjent (PESEL):" Margin="5"/>
+            <TextBox Name="txtPesel" Margin="5"/>
+            <TextBlock Text="Lekarz:" Margin="5"/>
+            <ComboBox Name="comboLekarz" SelectionChanged="ComboLekarz_SelectionChanged" Margin="5" HorizontalContentAlignment="Stretch"/>
+            <TextBlock Text="Data wizyty:" Margin="5"/>
+            <DatePicker Name="datePicker" SelectedDateChanged="DatePicker_SelectedDateChanged" Margin="5"/>
+            <TextBlock Text="Godzina wizyty:" Margin="5"/>
+            <ComboBox Name="comboGodzina" IsEnabled="False" Margin="5" HorizontalContentAlignment="Stretch"/>
+            <Button Content="Umów Wizytę" Click="btnUmowWizyte_Click" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
