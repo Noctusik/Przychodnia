@@ -1,0 +1,27 @@
+﻿<Window x:Class="Przychodnia.AddPracownikWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dodaj Pracownika" Height="450" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Imię:" Margin="5"/>
+            <TextBox Name="txtImie" Margin="5"/>
+            <TextBlock Text="Nazwisko:" Margin="5"/>
+            <TextBox Name="txtNazwisko" Margin="5"/>
+            <TextBlock Text="Numer telefonu:" Margin="5"/>
+            <TextBox Name="txtTelefon" Margin="5"/>
+            <TextBlock Text="Login użytkownika:" Margin="5"/>
+            <TextBox Name="txtLogin" Margin="5"/>
+            <TextBlock Text="Hasło użytkownika:" Margin="5"/>
+            <PasswordBox Name="txtHaslo" Margin="5"/>
+            <TextBlock Text="Rola:" Margin="5"/>
+            <ComboBox Name="comboRola" Margin="5">
+                <ComboBoxItem Content="lekarz"/>
+                <ComboBoxItem Content="rejestrator"/>
+                <ComboBoxItem Content="dyrektor"/>
+                <ComboBoxItem Content="administrator"/>
+            </ComboBox>
+            <Button Content="Dodaj" Click="btnDodaj_Click" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>

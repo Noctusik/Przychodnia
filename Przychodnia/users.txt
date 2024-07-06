@@ -1,6 +1,5 @@
-admin,admin,administrator
-user1,password1,pacjent
-user2,password2,lekarz
-doctor,doctor,lekarz
-reception,reception,rejestrator
-directo,director,dyrektor
+admin,admin,administrator,Jan,Kowalski,123456789
+user1,password1,pacjent,Anna,Nowak,987654321
+doctor,doctor,lekarz,Micha³,Zieliñski,123123123
+reception,reception,rejestrator,Katarzyna,Pawlak,321321321
+director,director,dyrektor,Tomasz,Nowak,456456456

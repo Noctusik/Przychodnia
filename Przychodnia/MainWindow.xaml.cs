@@ -21,10 +21,10 @@ namespace Przychodnia
             {
                 case "administrator":
                     btnDodajPacjenta.Visibility = Visibility.Visible;
-                    btnDodajLekarza.Visibility = Visibility.Visible;
+                    btnDodajPracownika.Visibility = Visibility.Visible;
                     btnUmowWizyte.Visibility = Visibility.Visible;
                     btnWyswietlPacjentow.Visibility = Visibility.Visible;
-                    btnWyswietlLekarzy.Visibility = Visibility.Visible;
+                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     btnWyswietlWizyty.Visibility = Visibility.Visible;
                     btnWyswietlRaporty.Visibility = Visibility.Visible;
                     break;
@@ -32,12 +32,12 @@ namespace Przychodnia
                     btnDodajPacjenta.Visibility = Visibility.Visible;
                     btnUmowWizyte.Visibility = Visibility.Visible;
                     btnWyswietlPacjentow.Visibility = Visibility.Visible;
-                    btnWyswietlLekarzy.Visibility = Visibility.Visible;
+                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     btnWyswietlWizyty.Visibility = Visibility.Visible;
                     break;
                 case "lekarz":
                     btnWyswietlPacjentow.Visibility = Visibility.Visible;
-                    btnWyswietlLekarzy.Visibility = Visibility.Visible;
+                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     btnWyswietlWizyty.Visibility = Visibility.Visible;
                     break;
                 case "pacjent":
@@ -62,6 +62,18 @@ namespace Przychodnia
             WyswietlPacjentowWindow wyswietlPacjentowWindow = new WyswietlPacjentowWindow();
             wyswietlPacjentowWindow.ShowDialog();
         }
+        private void btnDodajPracownika_Click(object sender, RoutedEventArgs e)
+        {
+            AddPracownikWindow addPracownikWindow = new AddPracownikWindow();
+            addPracownikWindow.ShowDialog();
+        }
+        private void btnWyswietlPracownikow_Click(object sender, RoutedEventArgs e)
+        {
+            WyswietlPracownikowWindow wyswietlPracownikowWindow = new WyswietlPracownikowWindow();
+            wyswietlPracownikowWindow.ShowDialog();
+        }
+
+
 
     }
 
