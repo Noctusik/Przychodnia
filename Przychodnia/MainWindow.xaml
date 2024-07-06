@@ -6,7 +6,7 @@
         <StackPanel>
             <Button Name="btnDodajPacjenta" Content="Dodaj Pacjenta" Margin="10" Visibility="Collapsed" Click="btnDodajPacjenta_Click"/>
             <Button Name="btnDodajPracownika" Content="Dodaj Pracownika" Margin="10" Click="btnDodajPracownika_Click" Visibility="Collapsed"/>
-            <Button Name="btnUmowWizyte" Content="Umów Wizytę" Margin="10" Visibility="Collapsed"/>
+            <Button Name="btnUmowWizyte" Content="Umów Wizytę" Margin="10" Click="btnUmowWizyte_Click" Visibility="Collapsed"/>
             <Button Name="btnWyswietlPacjentow" Content="Wyświetl Pacjentów" Margin="10" Click="btnWyswietlPacjentow_Click" Visibility="Collapsed"/>
             <Button Name="btnWyswietlPracownikow" Content="Wyświetl Pracowników" Margin="10" Click="btnWyswietlPracownikow_Click" Visibility="Collapsed"/>
             <Button Name="btnWyswietlWizyty" Content="Wyświetl Wizyty" Margin="10"/>
