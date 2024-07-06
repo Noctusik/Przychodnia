@@ -1,0 +1,6 @@
+admin,admin,administrator
+user1,password1,pacjent
+user2,password2,lekarz
+doctor,doctor,lekarz
+reception,reception,rejestrator
+directo,director,dyrektor
