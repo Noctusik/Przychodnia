@@ -87,15 +87,15 @@ namespace Przychodnia
                 foreach (var line in lines)
                 {
                     var parts = line.Split(',');
-                    if (parts.Length == 4)
+                    if (parts.Length == 5)
                     {
                         var wizytaLekarz = parts[1];
                         var wizytaData = DateTime.Parse(parts[2]);
-                        var wizytaGodzina = parts[3];
+                        var wizytaGodzina = TimeSpan.Parse(parts[3]);
 
                         if (lekarz.Login == wizytaLekarz && data == wizytaData)
                         {
-                            zajeteGodziny.Add(wizytaGodzina);
+                            zajeteGodziny.Add(wizytaGodzina.ToString(@"hh\:mm"));
                         }
                     }
                 }
@@ -186,7 +186,7 @@ namespace Przychodnia
             {
                 using (StreamWriter swWizyty = new StreamWriter(FilePathWizyty, true, Encoding.UTF8))
                 {
-                    swWizyty.WriteLine($"{wybranyPacjent.Pesel},{wybranyLekarz.Login},{dataWizyty:yyyy-MM-dd},{godzinaWizyty}");
+                    swWizyty.WriteLine($"{wybranyPacjent.Pesel},{wybranyLekarz.Login},{dataWizyty:yyyy-MM-dd},{godzinaWizyty},Oczekująca");
                 }
 
                 MessageBox.Show("Wizyta została umówiona.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -213,7 +213,7 @@ namespace Przychodnia
                 foreach (var line in lines)
                 {
                     var parts = line.Split(',');
-                    if (parts.Length == 4)
+                    if (parts.Length == 5)
                     {
                         var wizytaLekarz = parts[1];
                         var wizytaData = DateTime.Parse(parts[2]);
@@ -230,4 +230,5 @@ namespace Przychodnia
         }
     }
 
+    
 }
