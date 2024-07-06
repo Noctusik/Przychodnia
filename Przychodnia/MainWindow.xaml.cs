@@ -77,7 +77,11 @@ namespace Przychodnia
             UmowWizyteWindow umowWizyteWindow = new UmowWizyteWindow();
             umowWizyteWindow.ShowDialog();
         }
-
+        private void btnWyswietlWizyty_Click(object sender, RoutedEventArgs e)
+        {
+            WyswietlWizytyWindow wyswietlWizytyWindow = new WyswietlWizytyWindow();
+            wyswietlWizytyWindow.ShowDialog();
+        }
 
 
     }
