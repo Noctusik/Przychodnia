@@ -9,7 +9,7 @@
             <Button Name="btnUmowWizyte" Content="Umów Wizytę" Margin="10" Click="btnUmowWizyte_Click" Visibility="Collapsed"/>
             <Button Name="btnWyswietlPacjentow" Content="Wyświetl Pacjentów" Margin="10" Click="btnWyswietlPacjentow_Click" Visibility="Collapsed"/>
             <Button Name="btnWyswietlPracownikow" Content="Wyświetl Pracowników" Margin="10" Click="btnWyswietlPracownikow_Click" Visibility="Collapsed"/>
-            <Button Name="btnWyswietlWizyty" Content="Wyświetl Wizyty" Margin="10"/>
+            <Button Name="btnWyswietlWizyty" Content="Wyświetl Wizyty" Margin="10" Click="btnWyswietlWizyty_Click"/>
             <Button Name="btnWyswietlRaporty" Content="Wyświetl Raporty" Margin="10" Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
