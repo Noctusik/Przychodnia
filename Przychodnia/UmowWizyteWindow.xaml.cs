@@ -230,5 +230,5 @@ namespace Przychodnia
         }
     }
 
-    
+   
 }
