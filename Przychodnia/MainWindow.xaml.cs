@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Windows;
 
 namespace Przychodnia
 {
@@ -87,6 +90,45 @@ namespace Przychodnia
         {
             WyswietlWizytyWindow wyswietlWizytyWindow = new WyswietlWizytyWindow(_login, _rola);
             wyswietlWizytyWindow.ShowDialog();
+        }
+
+        private void btnWyswietlRaporty_Click(object sender, RoutedEventArgs e)
+        {
+            var wizyty = PobierzWszystkieWizyty();
+            var raportWindow = new RaportWindow(wizyty);
+            raportWindow.Show();
+        }
+
+        private List<Wizyta> PobierzWszystkieWizyty()
+        {
+            var filePathWizyty = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wizyty.txt");
+            var wizyty = new List<Wizyta>();
+
+            if (File.Exists(filePathWizyty))
+            {
+                var lines = File.ReadAllLines(filePathWizyty, Encoding.UTF8);
+                foreach (var line in lines)
+                {
+                    var parts = line.Split(',');
+                    if (parts.Length >= 8)
+                    {
+                        var wizyta = new Wizyta
+                        {
+                            PeselPacjenta = parts[0],
+                            LoginLekarza = parts[1],
+                            DataWizyty = DateTime.Parse(parts[2]),
+                            GodzinaWizyty = TimeSpan.Parse(parts[3]),
+                            StatusWizyty = parts[4],
+                            Wywiad = parts.Length > 5 ? parts[5] : string.Empty,
+                            Rozpoznanie = parts.Length > 6 ? parts[6] : string.Empty,
+                            Zalecenia = parts.Length > 7 ? parts[7] : string.Empty,
+                        };
+                        wizyty.Add(wizyta);
+                    }
+                }
+            }
+
+            return wizyty;
         }
 
         private void btnWyloguj_Click(object sender, RoutedEventArgs e)
