@@ -9,30 +9,16 @@ Aplikacja WPF dla zarządzania wizytami w przychodni. Aplikacja pozwala na dodaw
 
 ## Instalacja
 
-1. Sklonuj repozytorium:
+1. Pobierz release
 
-    ```bash
-    git clone https://github.com/twojrepozytorium/przychodnia.git
-    ```
+2. Uruchom plik .exe
 
-2. Otwórz rozwiązanie w Visual Studio.
+3. Login oraz hasło to admin/admin
 
-3. Przygotuj pliki `wizyty.txt` i `pacjenci.txt` w katalogu głównym projektu. Przykładowe formaty plików:
+4. Dodaj użytkowników
 
-    - `wizyty.txt`:
-
-      ```text
-      pesel_pacjenta,login_lekarza,data_wizyty,godzina_wizyty,status_wizyty,wywiad,rozpoznanie,zalecenia
-      ```
-
-    - `pacjenci.txt`:
-
-      ```text
-      imie,nazwisko,pesel,telefon
-      ```
-
-4. Skompiluj i uruchom projekt.
-
+5. Działaj
+   
 ## Użytkowanie
 
 ### Role użytkowników
