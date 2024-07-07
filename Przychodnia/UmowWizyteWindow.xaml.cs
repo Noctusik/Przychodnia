@@ -201,7 +201,7 @@ namespace Przychodnia
 
         private bool IsValidPesel(string pesel)
         {
-            string pattern = @"^[0-9]{11}$";
+            string pattern = @"^[0-9]{2}([02468]1|[13579][012])(0[1-9]|1[0-9]|2[0-9]|3[01])[0-9]{5}$";
             return Regex.IsMatch(pesel, pattern);
         }
 
