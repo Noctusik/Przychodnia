@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,9 @@ namespace Przychodnia
         private List<Pacjent> wszyscyPacjenci = new List<Pacjent>();
         private string userLogin;
         private string userRole;
+        private string userPesel;
+
+        public bool IsPeselReadOnly => userRole == "pacjent";
 
         public WyswietlWizytyWindow(string login, string role)
         {
@@ -23,7 +27,15 @@ namespace Przychodnia
             userLogin = login;
             userRole = role;
             LoadData();
+            SetUserPesel();
             PopulateDataGrid();
+
+            if (userRole == "pacjent")
+            {
+                txtFilterPesel.Text = userPesel;
+                txtFilterPesel.IsReadOnly = true;
+                btnFilter_Click(this, null);
+            }
         }
 
         private void LoadData()
@@ -31,6 +43,18 @@ namespace Przychodnia
             wszyscyPacjenci = PobierzPacjentow();
             wszystkieWizyty = PobierzWizyty();
             PolaczWizytyZPacjentami();
+        }
+
+        private void SetUserPesel()
+        {
+            if (userRole == "pacjent")
+            {
+                var pacjent = wszyscyPacjenci.FirstOrDefault(p => $"{p.Imie.ToLower()}.{p.Nazwisko.ToLower()}" == userLogin);
+                if (pacjent != null)
+                {
+                    userPesel = pacjent.Pesel;
+                }
+            }
         }
 
         private void PopulateDataGrid()
@@ -72,7 +96,7 @@ namespace Przychodnia
                 foreach (var line in lines)
                 {
                     var parts = line.Split(',');
-                    if (parts.Length >= 5)
+                    if (parts.Length >= 8)
                     {
                         var wizyta = new Wizyta
                         {
@@ -83,7 +107,7 @@ namespace Przychodnia
                             StatusWizyty = parts[4],
                             Wywiad = parts.Length > 5 ? parts[5] : string.Empty,
                             Rozpoznanie = parts.Length > 6 ? parts[6] : string.Empty,
-                            Zalecenia = parts.Length > 7 ? parts[7] : string.Empty
+                            Zalecenia = parts.Length > 7 ? parts[7] : string.Empty,
                         };
                         wizyty.Add(wizyta);
                     }

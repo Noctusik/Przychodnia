@@ -1,36 +1,35 @@
 ﻿<Window x:Class="Przychodnia.WyswietlWizytyWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Wyświetl Wizyty" Height="450" Width="900">
-    <Grid>
+        Title="Wyświetl Wizyty" Height="450" Width="800">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="10">
-            <TextBlock Text="PESEL Pacjenta:" Margin="5"/>
-            <TextBox Name="txtFilterPesel" Width="100" Margin="5"/>
-            <TextBlock Text="Lekarz:" Margin="5"/>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="PESEL:" VerticalAlignment="Center"/>
+            <TextBox Name="txtFilterPesel" Width="100" Margin="5" IsReadOnly="{Binding IsPeselReadOnly}"/>
+            <TextBlock Text="Login Lekarza:" VerticalAlignment="Center"/>
             <TextBox Name="txtFilterLoginLekarza" Width="100" Margin="5"/>
-            <TextBlock Text="Status:" Margin="5"/>
-            <ComboBox Name="comboStatus" Width="120" Margin="5">
-                <ComboBoxItem Content="Wszystkie" IsSelected="True"/>
+            <TextBlock Text="Status:" VerticalAlignment="Center"/>
+            <ComboBox Name="comboStatus" Width="100" Margin="5">
+                <ComboBoxItem Content="Wszystkie"/>
                 <ComboBoxItem Content="Oczekująca"/>
                 <ComboBoxItem Content="Zrealizowana"/>
                 <ComboBoxItem Content="Anulowana"/>
             </ComboBox>
             <Button Content="Filtruj" Click="btnFilter_Click" Margin="5"/>
         </StackPanel>
-        <DataGrid Name="dataGridWizyty" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Margin="10" MouseDoubleClick="dataGridWizyty_MouseDoubleClick">
+        <DataGrid Name="dataGridWizyty" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="PESEL Pacjenta" Binding="{Binding PeselPacjenta}" Width="*"/>
-                <DataGridTextColumn Header="Imię Pacjenta" Binding="{Binding ImiePacjenta}" Width="*"/>
-                <DataGridTextColumn Header="Nazwisko Pacjenta" Binding="{Binding NazwiskoPacjenta}" Width="*"/>
+                <DataGridTextColumn Header="PESEL" Binding="{Binding PeselPacjenta}" Width="*"/>
+                <DataGridTextColumn Header="Imię" Binding="{Binding ImiePacjenta}" Width="*"/>
+                <DataGridTextColumn Header="Nazwisko" Binding="{Binding NazwiskoPacjenta}" Width="*"/>
                 <DataGridTextColumn Header="Lekarz" Binding="{Binding LoginLekarza}" Width="*"/>
-                <DataGridTextColumn Header="Data Wizyty" Binding="{Binding DataWizyty, StringFormat=yyyy-MM-dd}" Width="*"/>
+                <DataGridTextColumn Header="Data Wizyty" Binding="{Binding DataWizyty}" Width="*"/>
                 <DataGridTextColumn Header="Godzina Wizyty" Binding="{Binding GodzinaWizyty}" Width="*"/>
-                <DataGridTextColumn Header="Status Wizyty" Binding="{Binding StatusWizyty}" Width="*"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding StatusWizyty}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

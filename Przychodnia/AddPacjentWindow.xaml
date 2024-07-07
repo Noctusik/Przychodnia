@@ -1,18 +1,33 @@
 ﻿<Window x:Class="Przychodnia.AddPacjentWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Dodaj Pacjenta" Height="320" Width="400">
-    <Grid>
-        <StackPanel Margin="10">
-            <TextBlock Text="Imię:" Margin="5"/>
-            <TextBox Name="txtImie" Margin="5"/>
-            <TextBlock Text="Nazwisko:" Margin="5"/>
-            <TextBox Name="txtNazwisko" Margin="5"/>
-            <TextBlock Text="PESEL:" Margin="5"/>
-            <TextBox Name="txtPesel" Margin="5"/>
-            <TextBlock Text="Numer telefonu:" Margin="5"/>
-            <TextBox Name="txtTelefon" Margin="5"/>
-            <Button Content="Dodaj" Click="btnDodaj_Click" Margin="10"/>
+        Title="Dodaj Pacjenta" Height="350" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Imię:" Margin="0,0,0,5"/>
+            <TextBox Name="txtImie" Height="30" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="Nazwisko:" Margin="0,0,0,5"/>
+            <TextBox Name="txtNazwisko" Height="30" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10">
+            <TextBlock Text="PESEL:" Margin="0,0,0,5"/>
+            <TextBox Name="txtPesel" Height="30" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="3" Margin="0,0,0,10">
+            <TextBlock Text="Telefon:" Margin="0,0,0,5"/>
+            <TextBox Name="txtTelefon" Height="30" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right">
+            <Button Content="Dodaj" Width="100" Margin="5" Click="btnDodaj_Click"/>
         </StackPanel>
     </Grid>
 </Window>
