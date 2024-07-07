@@ -14,7 +14,7 @@ namespace Przychodnia
             _rola = rola;
             SetupUI();
         }
-        
+
         private void SetupUI()
         {
             switch (_rola)
@@ -32,12 +32,10 @@ namespace Przychodnia
                     btnDodajPacjenta.Visibility = Visibility.Visible;
                     btnUmowWizyte.Visibility = Visibility.Visible;
                     btnWyswietlPacjentow.Visibility = Visibility.Visible;
-                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     btnWyswietlWizyty.Visibility = Visibility.Visible;
                     break;
                 case "lekarz":
                     btnWyswietlPacjentow.Visibility = Visibility.Visible;
-                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     btnWyswietlWizyty.Visibility = Visibility.Visible;
                     break;
                 case "pacjent":
@@ -45,6 +43,8 @@ namespace Przychodnia
                     break;
                 case "dyrektor":
                     btnWyswietlRaporty.Visibility = Visibility.Visible;
+                    btnWyswietlPacjentow.Visibility = Visibility.Visible;
+                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     break;
                 default:
                     MessageBox.Show("Nieznana rola użytkownika.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -52,38 +52,49 @@ namespace Przychodnia
                     break;
             }
         }
+
         private void btnDodajPacjenta_Click(object sender, RoutedEventArgs e)
         {
             AddPacjentWindow addPacjentWindow = new AddPacjentWindow();
             addPacjentWindow.ShowDialog();
         }
+
         private void btnWyswietlPacjentow_Click(object sender, RoutedEventArgs e)
         {
             WyswietlPacjentowWindow wyswietlPacjentowWindow = new WyswietlPacjentowWindow();
             wyswietlPacjentowWindow.ShowDialog();
         }
+
         private void btnDodajPracownika_Click(object sender, RoutedEventArgs e)
         {
             AddPracownikWindow addPracownikWindow = new AddPracownikWindow();
             addPracownikWindow.ShowDialog();
         }
+
         private void btnWyswietlPracownikow_Click(object sender, RoutedEventArgs e)
         {
             WyswietlPracownikowWindow wyswietlPracownikowWindow = new WyswietlPracownikowWindow();
             wyswietlPracownikowWindow.ShowDialog();
         }
+
         private void btnUmowWizyte_Click(object sender, RoutedEventArgs e)
         {
             UmowWizyteWindow umowWizyteWindow = new UmowWizyteWindow();
             umowWizyteWindow.ShowDialog();
         }
+
         private void btnWyswietlWizyty_Click(object sender, RoutedEventArgs e)
         {
-            WyswietlWizytyWindow wyswietlWizytyWindow = new WyswietlWizytyWindow();
+            WyswietlWizytyWindow wyswietlWizytyWindow = new WyswietlWizytyWindow(_login, _rola);
             wyswietlWizytyWindow.ShowDialog();
         }
 
-
+        private void btnWyloguj_Click(object sender, RoutedEventArgs e)
+        {
+            // Zamknij bieżące okno i otwórz okno logowania
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
+        }
     }
-
 }

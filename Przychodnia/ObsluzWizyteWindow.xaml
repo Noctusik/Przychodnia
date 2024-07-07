@@ -1,0 +1,30 @@
+﻿<Window x:Class="Przychodnia.ObsluzWizyteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Obsłuż Wizytę" Height="500" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Wywiad:" Margin="0,0,0,5"/>
+            <TextBox Name="txtWywiad" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="Rozpoznanie:" Margin="0,0,0,5"/>
+            <TextBox Name="txtRozpoznanie" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10">
+            <TextBlock Text="Zalecenia:" Margin="0,0,0,5"/>
+            <TextBox Name="txtZalecenia" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right">
+            <Button Name="btnAnuluj" Content="Anuluj Wizytę" Width="100" Margin="5" Click="btnAnuluj_Click"/>
+            <Button Name="btnZapisz" Content="Zapisz" Width="100" Margin="5" Click="btnZapisz_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
