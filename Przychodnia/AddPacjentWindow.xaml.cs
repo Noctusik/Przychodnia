@@ -63,11 +63,11 @@ namespace Przychodnia
             }
 
             // Dodaj konto użytkownika
-            string login = $"{imie}.{nazwisko}".ToLower();
+            string login = $"{imie}{nazwisko}".ToLower();
             string haslo = pesel;
             using (var writer = new StreamWriter(FilePathUsers, true, Encoding.UTF8))
             {
-                writer.WriteLine($"{login},{haslo},{imie},{nazwisko},pacjent,{telefon}");
+                writer.WriteLine($"{login},{haslo},pacjent,{imie},{nazwisko},{telefon}");
             }
 
             MessageBox.Show("Pacjent został dodany, a konto użytkownika zostało utworzone.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
