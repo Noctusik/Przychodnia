@@ -2,11 +2,6 @@
 
 Aplikacja WPF dla zarządzania wizytami w przychodni. Aplikacja pozwala na dodawanie pacjentów, pracowników, umawianie wizyt oraz generowanie raportów. Działa w zależności od roli użytkownika: administrator, rejestrator, lekarz, pacjent i dyrektor.
 
-## Wymagania
-
-- .NET Framework 4.7.2 lub nowszy
-- Visual Studio 2019 lub nowszy
-
 ## Instalacja
 
 1. Pobierz release
