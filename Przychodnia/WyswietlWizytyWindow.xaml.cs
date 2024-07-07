@@ -68,12 +68,15 @@ namespace Przychodnia
                 foreach (var line in lines)
                 {
                     var parts = line.Split(',');
+                    if (parts.Length == 5)
                     {
                         var wizyta = new Wizyta
                         {
                             PeselPacjenta = parts[0],
                             LoginLekarza = parts[1],
                             DataWizyty = DateTime.Parse(parts[2]),
+                            GodzinaWizyty = TimeSpan.Parse(parts[3]),
+                            StatusWizyty = parts[4]
                         };
                         wizyty.Add(wizyta);
                     }
@@ -103,21 +106,11 @@ namespace Przychodnia
 
             var filteredWizyty = wszystkieWizyty.Where(w =>
                 (string.IsNullOrWhiteSpace(filterPesel) || w.PeselPacjenta.Contains(filterPesel)) &&
+                (string.IsNullOrWhiteSpace(filterLoginLekarza) || w.LoginLekarza.Contains(filterLoginLekarza)) &&
+                (filterStatus == "Wszystkie" || string.IsNullOrWhiteSpace(filterStatus) || w.StatusWizyty == filterStatus)
             ).ToList();
 
             dataGridWizyty.ItemsSource = filteredWizyty;
         }
-    }
-
-
-    public class Wizyta
-    {
-        public string PeselPacjenta { get; set; }
-        public string ImiePacjenta { get; set; }
-        public string NazwiskoPacjenta { get; set; }
-        public string LoginLekarza { get; set; }
-        public DateTime DataWizyty { get; set; }
-        public TimeSpan GodzinaWizyty { get; set; }
-        public string StatusWizyty { get; set; }
     }
 }
