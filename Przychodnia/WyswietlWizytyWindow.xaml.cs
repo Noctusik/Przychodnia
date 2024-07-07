@@ -14,10 +14,14 @@ namespace Przychodnia
         private string FilePathPacjenci = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pacjenci.txt");
         private List<Wizyta> wszystkieWizyty = new List<Wizyta>();
         private List<Pacjent> wszyscyPacjenci = new List<Pacjent>();
+        private string userLogin;
+        private string userRole;
 
-        public WyswietlWizytyWindow()
+        public WyswietlWizytyWindow(string login, string role)
         {
             InitializeComponent();
+            userLogin = login;
+            userRole = role;
             LoadData();
             PopulateDataGrid();
         }
@@ -68,7 +72,7 @@ namespace Przychodnia
                 foreach (var line in lines)
                 {
                     var parts = line.Split(',');
-                    if (parts.Length == 5)
+                    if (parts.Length >= 5)
                     {
                         var wizyta = new Wizyta
                         {
@@ -76,7 +80,10 @@ namespace Przychodnia
                             LoginLekarza = parts[1],
                             DataWizyty = DateTime.Parse(parts[2]),
                             GodzinaWizyty = TimeSpan.Parse(parts[3]),
-                            StatusWizyty = parts[4]
+                            StatusWizyty = parts[4],
+                            Wywiad = parts.Length > 5 ? parts[5] : string.Empty,
+                            Rozpoznanie = parts.Length > 6 ? parts[6] : string.Empty,
+                            Zalecenia = parts.Length > 7 ? parts[7] : string.Empty
                         };
                         wizyty.Add(wizyta);
                     }
@@ -111,6 +118,27 @@ namespace Przychodnia
             ).ToList();
 
             dataGridWizyty.ItemsSource = filteredWizyty;
+        }
+
+        private void dataGridWizyty_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (dataGridWizyty.SelectedItem is Wizyta wybranaWizyta)
+            {
+                if (userRole != "lekarz")
+                {
+                    MessageBox.Show("Tylko lekarz może obsłużyć wizytę.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                ObsluzWizyteWindow obsluzWizyteWindow = new ObsluzWizyteWindow(wybranaWizyta);
+                obsluzWizyteWindow.ShowDialog();
+                LoadData(); // Odświeżenie listy wizyt po obsłudze wizyty
+                PopulateDataGrid();
+            }
+            else
+            {
+                MessageBox.Show("Proszę wybrać wizytę do obsłużenia.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

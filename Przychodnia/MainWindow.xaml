@@ -11,6 +11,7 @@
             <Button Name="btnWyswietlPracownikow" Content="Wyświetl Pracowników" Margin="10" Click="btnWyswietlPracownikow_Click" Visibility="Collapsed"/>
             <Button Name="btnWyswietlWizyty" Content="Wyświetl Wizyty" Margin="10" Click="btnWyswietlWizyty_Click"/>
             <Button Name="btnWyswietlRaporty" Content="Wyświetl Raporty" Margin="10" Visibility="Collapsed"/>
+            <Button Name="btnWyloguj" Content="Wyloguj" Width="200" Margin="10" Click="btnWyloguj_Click"/>
         </StackPanel>
     </Grid>
 </Window>

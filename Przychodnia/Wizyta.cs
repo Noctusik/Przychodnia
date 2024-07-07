@@ -9,5 +9,8 @@
         public DateTime DataWizyty { get; set; }
         public TimeSpan GodzinaWizyty { get; set; }
         public string StatusWizyty { get; set; }
+        public string Wywiad { get; set; }
+        public string Rozpoznanie { get; set; }
+        public string Zalecenia { get; set; }
     }
 }

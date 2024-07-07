@@ -5,6 +5,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="10">
@@ -21,7 +22,7 @@
             </ComboBox>
             <Button Content="Filtruj" Click="btnFilter_Click" Margin="5"/>
         </StackPanel>
-        <DataGrid Name="dataGridWizyty" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Margin="10">
+        <DataGrid Name="dataGridWizyty" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Margin="10" MouseDoubleClick="dataGridWizyty_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="PESEL Pacjenta" Binding="{Binding PeselPacjenta}" Width="*"/>
                 <DataGridTextColumn Header="Imię Pacjenta" Binding="{Binding ImiePacjenta}" Width="*"/>
