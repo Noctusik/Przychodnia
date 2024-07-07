@@ -32,12 +32,10 @@ namespace Przychodnia
                     btnDodajPacjenta.Visibility = Visibility.Visible;
                     btnUmowWizyte.Visibility = Visibility.Visible;
                     btnWyswietlPacjentow.Visibility = Visibility.Visible;
-                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     btnWyswietlWizyty.Visibility = Visibility.Visible;
                     break;
                 case "lekarz":
                     btnWyswietlPacjentow.Visibility = Visibility.Visible;
-                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     btnWyswietlWizyty.Visibility = Visibility.Visible;
                     break;
                 case "pacjent":
@@ -45,6 +43,8 @@ namespace Przychodnia
                     break;
                 case "dyrektor":
                     btnWyswietlRaporty.Visibility = Visibility.Visible;
+                    btnWyswietlPacjentow.Visibility = Visibility.Visible;
+                    btnWyswietlPracownikow.Visibility = Visibility.Visible;
                     break;
                 default:
                     MessageBox.Show("Nieznana rola użytkownika.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 
 namespace Przychodnia
@@ -13,12 +14,17 @@ namespace Przychodnia
         public WyswietlPracownikowWindow()
         {
             InitializeComponent();
-            LoadPracownicy();
+            LoadData();
+            PopulateDataGrid();
         }
 
-        private void LoadPracownicy()
+        private void LoadData()
         {
             wszyscyPracownicy = PobierzPracownikow();
+        }
+
+        private void PopulateDataGrid()
+        {
             dataGridPracownicy.ItemsSource = wszyscyPracownicy;
         }
 
@@ -27,11 +33,11 @@ namespace Przychodnia
             var pracownicy = new List<Pracownik>();
             if (File.Exists(FilePathUsers))
             {
-                var lines = File.ReadAllLines(FilePathUsers);
+                var lines = File.ReadAllLines(FilePathUsers, Encoding.UTF8);
                 foreach (var line in lines)
                 {
                     var parts = line.Split(',');
-                    if (parts.Length == 6) // Sprawdź, czy liczba elementów jest odpowiednia
+                    if (parts.Length == 6)
                     {
                         var pracownik = new Pracownik
                         {
@@ -51,27 +57,30 @@ namespace Przychodnia
 
         private void btnFilter_Click(object sender, RoutedEventArgs e)
         {
-            string filterImie = txtFilterImie.Text.ToLower();
-            string filterNazwisko = txtFilterNazwisko.Text.ToLower();
-            string filterRola = txtFilterRola.Text.ToLower();
-
+            string filterLogin = txtFilterLogin.Text;
+            string filterImie = txtFilterImie.Text;
+            string filterNazwisko = txtFilterNazwisko.Text;
+            string filterRola = txtFilterRola.Text;
+           
             var filteredPracownicy = wszyscyPracownicy.Where(p =>
-                (string.IsNullOrWhiteSpace(filterImie) || p.Imie.ToLower().Contains(filterImie)) &&
-                (string.IsNullOrWhiteSpace(filterNazwisko) || p.Nazwisko.ToLower().Contains(filterNazwisko)) &&
-                (string.IsNullOrWhiteSpace(filterRola) || p.Rola.ToLower().Contains(filterRola))
+                (string.IsNullOrWhiteSpace(filterLogin) || p.Login.Contains(filterLogin)) &&
+                (string.IsNullOrWhiteSpace(filterImie) || p.Imie.Contains(filterImie)) &&
+                (string.IsNullOrWhiteSpace(filterNazwisko) || p.Nazwisko.Contains(filterNazwisko)) &&
+                (string.IsNullOrWhiteSpace(filterRola) || p.Rola.Contains(filterRola))                
             ).ToList();
 
             dataGridPracownicy.ItemsSource = filteredPracownicy;
         }
     }
 
-    public class Pracownik
+
+public class Pracownik
     {
         public string Login { get; set; }
-        public string Haslo { get; set; }
-        public string Rola { get; set; }
+        public string Haslo { get; set; } // To pole jest wczytywane, ale nie będzie wyświetlane
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
+        public string Rola { get; set; }
         public string Telefon { get; set; }
     }
 }

@@ -124,14 +124,23 @@ namespace Przychodnia
         {
             if (dataGridWizyty.SelectedItem is Wizyta wybranaWizyta)
             {
-                if (userRole != "lekarz")
+                if (userRole == "lekarz")
                 {
-                    MessageBox.Show("Tylko lekarz może obsłużyć wizytę.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    ObsluzWizyteWindow obsluzWizyteWindow = new ObsluzWizyteWindow(wybranaWizyta);
+                    obsluzWizyteWindow.ShowDialog();
                 }
-
-                ObsluzWizyteWindow obsluzWizyteWindow = new ObsluzWizyteWindow(wybranaWizyta);
-                obsluzWizyteWindow.ShowDialog();
+                else if (userRole == "rejestrator")
+                {
+                    if (wybranaWizyta.StatusWizyty == "Zrealizowana")
+                    {
+                        FinansowaObslugaWindow finansowaObslugaWindow = new FinansowaObslugaWindow(wybranaWizyta);
+                        finansowaObslugaWindow.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tylko wizyty ze statusem 'Zrealizowana' mogą być obsługiwane finansowo.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
                 LoadData(); // Odświeżenie listy wizyt po obsłudze wizyty
                 PopulateDataGrid();
             }
